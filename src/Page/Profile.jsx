@@ -3,12 +3,12 @@ import AppLayout from "../components/layout/AppLayout";
 
 const Profile = () => {
   const user = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    phone: "+1 234 567 8901",
-    username: "johndoe123",
+    name: "Abhiraj Yadav",
+    email: "abhiraj@example.com",
+    phone: "+91 9112299229",
+    username: "abhiraj123",
     avatar:
-      "https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600",
   };
 
   const levelStats = {
@@ -25,62 +25,107 @@ const Profile = () => {
 
   return (
     <AppLayout>
-      <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
-        {/* Avatar */}
-        <img
-          src={user.avatar}
-          alt="User Avatar"
-          className="w-24 h-24 rounded-full mb-4"
-        />
-
-        {/* User Info */}
-        <h2 className="text-2xl font-semibold mb-2">{user.name}</h2>
-        <p className="text-gray-500 mb-1">{user.email}</p>
-        <p className="text-gray-500 mb-1">{user.phone}</p>
-        <p className="text-gray-500 mb-4">{user.username}</p>
-
-        {/* Statistics Section */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Level Stats */}
-          <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold mb-4">Level Stats</h3>
-            <div className="mb-2">
-              <strong>Points Earned: </strong>
-              <span>{levelStats.pointsEarned}</span>
+      <div className="flex flex-col lg:flex-row bg-gradient-to-r from-blue-500 to-blue-400 p-10 rounded-lg shadow-2xl max-w-6xl mx-auto space-y-8 lg:space-y-0 lg:space-x-8 min-h-screen">
+        {/* Left Section */}
+        <div className="flex flex-col lg:w-3/4 space-y-8">
+          {/* Avatar and Online Status */}
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <img
+                src={user.avatar}
+                alt="User Avatar"
+                className="w-36 h-36 rounded-full border-4 border-white shadow-lg"
+              />
+              <span className="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-2 border-white"></span>
             </div>
-            <div className="mb-2">
-              <strong>Level Completed (English): </strong>
-              <span>{levelStats.levelCompletedEnglish}</span>
-            </div>
-            <div className="mb-2">
-              <strong>Level Completed (Math): </strong>
-              <span>{levelStats.levelCompletedMath}</span>
+
+            {/* User Info */}
+            <div className="text-left space-y-2">
+              <h2 className="text-4xl font-extrabold text-white">
+                {user.name}
+              </h2>
+              <p className="text-blue-200 text-lg">{user.email}</p>
+              <p className="text-blue-200 text-lg">{user.phone}</p>
+              <p className="text-blue-300 italic">@{user.username}</p>
             </div>
           </div>
 
-          {/* Quiz Stats */}
-          <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold mb-4">Quiz Stats</h3>
-            <div className="mb-2">
-              <strong>Tests Completed: </strong>
-              <span>{quizStats.testsCompleted}</span>
+          {/* Statistics Section */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Level Stats */}
+            <div className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Level Stats
+              </h3>
+              <div className="flex justify-between mb-2">
+                <strong className="text-gray-600">Points Earned:</strong>
+                <span className="text-blue-600">{levelStats.pointsEarned}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <strong className="text-gray-600">Completed (English):</strong>
+                <span className="text-blue-600">
+                  {levelStats.levelCompletedEnglish}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <strong className="text-gray-600">Completed (Math):</strong>
+                <span className="text-blue-600">
+                  {levelStats.levelCompletedMath}
+                </span>
+              </div>
             </div>
-            <div className="mb-2">
-              <strong>Tests Failed: </strong>
-              <span>{quizStats.testsFailed}</span>
+
+            {/* Quiz Stats */}
+            <div className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Quiz Stats
+              </h3>
+              <div className="flex justify-between mb-2">
+                <strong className="text-gray-600">Tests Completed:</strong>
+                <span className="text-blue-600">
+                  {quizStats.testsCompleted}
+                </span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <strong className="text-gray-600">Tests Failed:</strong>
+                <span className="text-red-600">{quizStats.testsFailed}</span>
+              </div>
+              <div className="flex justify-between">
+                <strong className="text-gray-600">Tests Passed:</strong>
+                <span className="text-green-600">{quizStats.testsPassed}</span>
+              </div>
             </div>
-            <div className="mb-2">
-              <strong>Tests Passed: </strong>
-              <span>{quizStats.testsPassed}</span>
-            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-4 justify-start mt-6">
+            <button className="bg-red-500 text-white px-6 py-3 rounded-lg shadow hover:bg-red-600 transition-transform transform hover:scale-105">
+              Logout
+            </button>
+            <button className="bg-white text-blue-500 px-6 py-3 rounded-lg shadow hover:bg-blue-100 transition-transform transform hover:scale-105">
+              Edit Profile
+            </button>
           </div>
         </div>
 
-        {/* Buttons */}
-        <div className="mt-6 flex gap-4">
-          <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
-            Logout
-          </button>
+        {/* Right Section */}
+        <div className="lg:w-1/4">
+          <div className="bg-gradient-to-r from-purple-500 to-purple-700 text-white p-8 rounded-lg shadow-md space-y-4">
+            <h3 className="text-2xl font-bold">
+              You're using the Beta version
+            </h3>
+            <p className="text-sm leading-relaxed">
+              Take your learning to the next level — switch to premium today!
+            </p>
+            <ul className="text-sm list-disc ml-4 space-y-1">
+              <li>Exclusive Test Papers</li>
+              <li>Access to Premium Levels</li>
+              <li>SAT Preparation Guide</li>
+            </ul>
+            <button className="bg-yellow-500 text-white px-4 py-3 rounded shadow hover:bg-yellow-600 w-full">
+              Switch to Premium
+            </button>
+          </div>
         </div>
       </div>
     </AppLayout>

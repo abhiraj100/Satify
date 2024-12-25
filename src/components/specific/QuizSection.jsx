@@ -1,6 +1,6 @@
 import  { useState } from "react";
 
-const QuizSection = () => {
+const QuestionSection = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionClick = (option) => {
@@ -52,4 +52,4 @@ const QuizSection = () => {
   );
 };
 
-export default QuizSection;
+export default QuestionSection;
